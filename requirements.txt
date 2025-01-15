@@ -1,0 +1,6 @@
+streamlit
+pydrive
+pymupdf
+python-docx
+pandas
+openai

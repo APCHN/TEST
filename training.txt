@@ -1,0 +1,5 @@
+# Link Google Drive folder chứa dữ liệu
+GoogleDriveFolder: https://drive.google.com/drive/folders/<FOLDER_ID>
+
+# Nhiệm vụ
+Task: Summarize all files in the folder
