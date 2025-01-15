@@ -4,8 +4,8 @@ from utils.drive_handler import fetch_files_from_drive, download_file_content
 from utils.file_handler import read_file
 from utils.gpt_handler import ask_gpt
 
-# Tạo tiêu đề ứng dụng
-st.title("Interactive Chatbot Trainer")
+# Tiêu đề ứng dụng
+st.title("Interactive Chatbot")
 
 # Tải file training.txt
 training_file = st.file_uploader("Upload training.txt", type=["txt"])
@@ -34,37 +34,11 @@ if training_file:
         full_data = "\n".join(data)
         st.success("Training data successfully loaded!")
 
-        # Chatbot Section
+        # Cửa sổ chat
         st.subheader("Chatbot Interaction")
 
-        # Lưu lịch sử hội thoại
+        # Lưu lịch sử hội thoại vào session_state
         if "messages" not in st.session_state:
             st.session_state["messages"] = [{"role": "system", "content": f"This is the training data:\n{full_data}"}]
 
-        # Hiển thị lịch sử chat
-        chat_container = st.container()
-        with chat_container:
-            for msg in st.session_state["messages"]:
-                if msg["role"] == "user":
-                    st.markdown(f"**You:** {msg['content']}")
-                elif msg["role"] == "assistant":
-                    st.markdown(f"**Bot:** {msg['content']}")
-
-        # Trường nhập văn bản
-        user_input = st.text_input("Type your message:", placeholder="Ask me anything...", key="user_input")
-
-        # Nút gửi
-        if st.button("Send"):
-            if user_input:
-                # Thêm câu hỏi của người dùng vào lịch sử
-                st.session_state["messages"].append({"role": "user", "content": user_input})
-
-                # Tạo prompt cho GPT-3.5
-                prompt = "\n".join([f"{msg['role'].capitalize()}: {msg['content']}" for msg in st.session_state["messages"]])
-                bot_response = ask_gpt(prompt)
-
-                # Thêm câu trả lời của bot vào lịch sử
-                st.session_state["messages"].append({"role": "assistant", "content": bot_response})
-
-                # Làm mới giao diện để hiển thị lịch sử mới
-                st.experimental_rerun()
+        # Hiển thị
