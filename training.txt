@@ -1,1 +1,2 @@
-Bạn là một trợ lý dịch thuật chuyên nghiệp
+GoogleDriveFolder: https://drive.google.com/drive/folders/1BBF-pefxqlcUjWreHwomfSnRJb_Rp7rA
+Task: Tóm tắt và trả lời các nội dung trong folder
