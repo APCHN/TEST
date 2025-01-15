@@ -37,15 +37,11 @@ if st.button("Send") and user_input.strip():
     # Thêm câu hỏi của người dùng vào lịch sử
     st.session_state["messages"].append({"role": "user", "content": user_input})
 
-    # Tạo prompt cho GPT-3.5
-    prompt = "\n".join([f"{msg['role'].capitalize()}: {msg['content']}" for msg in st.session_state["messages"]])
-    bot_response = ask_gpt(prompt)
+    # Gửi toàn bộ lịch sử hội thoại đến GPT-3.5
+    bot_response = ask_gpt(st.session_state["messages"])
 
     # Thêm câu trả lời của bot vào lịch sử
     st.session_state["messages"].append({"role": "assistant", "content": bot_response})
 
     # Làm trống trường nhập liệu
     st.session_state["user_input"] = ""
-
-# Duy trì trường nhập liệu
-st.text_input("Type your message:", placeholder="Ask me anything...", value="", key="user_input")
