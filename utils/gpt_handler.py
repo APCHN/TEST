@@ -11,10 +11,11 @@ def ask_gpt(messages, model="gpt-3.5-turbo"):
     Gửi danh sách messages tới GPT-3.5 và nhận phản hồi.
     """
     try:
+        # Sử dụng messages thay vì prompt
         response = openai.ChatCompletion.create(
             model=model,
             messages=messages
         )
         return response['choices'][0]['message']['content']
-    except openai.error.OpenAIError as e:
+    except Exception as e:  # Bắt lỗi chung thay vì openai.error.OpenAIError
         return f"Error with OpenAI API: {e}"
