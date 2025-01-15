@@ -7,6 +7,9 @@ load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def ask_gpt(prompt, model="gpt-3.5-turbo"):
+    """
+    Gửi prompt tới GPT-3.5 và nhận phản hồi.
+    """
     try:
         response = openai.ChatCompletion.create(
             model=model,
