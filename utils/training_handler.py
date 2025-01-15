@@ -1,9 +1,6 @@
 import re
 
 def parse_training_file(file_path):
-    """
-    Đọc file training.txt và phân tích hướng dẫn.
-    """
     instructions = {}
     with open(file_path, "r", encoding="utf-8") as file:
         lines = file.readlines()
